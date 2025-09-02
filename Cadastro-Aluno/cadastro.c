@@ -2,25 +2,24 @@
 
 int main() {
     char nome[20];
-    int idade;
+    int idade, matricula;
     int altura;
-    char sexo;
     char estado;
 
     printf("Escreva seu nome: \n");
-    scanf("%s", &nome);
+    scanf("%s", nome);
 
     printf("Escreva sua idade: \n");
-    scanf("%i", &idade);
+    scanf("%d", &idade);
 
     printf("Escreva sua altura: \n");
     scanf("%f", &altura);
     
-    printf("Escreva seu sexo: \n");
-    scanf("%s", &sexo);
+    printf("Escreva sua matrícula: \n");
+    scanf("%d", &matricula);
 
     printf("Escreva o estado em que reside: \n");
-    scanf("%s", &estado);
+    scanf("%s", estado);
 }
 
 /* 
