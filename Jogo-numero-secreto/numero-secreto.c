@@ -4,6 +4,7 @@
 
 int main() {
     int escolhaJogador, numeroSecreto;
+    int tentativas = 1;
     srand(time(0));
 
     printf("====Bem-vindo ao jogo do número secreto====\n");
@@ -20,8 +21,9 @@ int main() {
         while (escolhaJogador != numeroSecreto) {
             printf("Incorreto, tente novamente: ");
             scanf("%d", &escolhaJogador);
+            tentativas++;
         }
-        printf("Você acertou! :)");
+        printf("Você acertou com %d tentativas! :)", tentativas);
     }
     return 0;
 }
