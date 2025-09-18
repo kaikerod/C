@@ -27,11 +27,11 @@ int main() {
         printf("\n"); //Separa as peças
 
 
-    //Cavalo se move para baixo, esquerda
+    //Cavalo se move para cima, direita
     for (cavaloY = 1; cavaloY <= 2; cavaloY++) {
-        printf("Cavalo moveu para baixo\n");
+        printf("Cavalo moveu para cima\n");
         for (cavaloX = 1; cavaloX < cavaloY; cavaloX++) {
-            printf("Cavalo moveu para esquerda\n");
+            printf("Cavalo moveu para direita\n");
         }
     }
 
