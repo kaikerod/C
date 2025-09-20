@@ -21,13 +21,15 @@ int main() {
         printf("Digite o valor que deseja sacar: ");
         scanf("%d", &valorSaque);
 
-        if (saldo < valorSaque) { //Verifica se o valor do saque é maior que o saldo disponível
+        //Limita operações a 500 reais e verifica se o valor do saque é maior que o saldo.
+        if (valorSaque > 500) { 
+            printf("Erro! limite máximo por operações atingido!");
+        } else if (saldo < valorSaque) { 
             printf("Erro! o seu saldo é insuficiente! %d", saldo);
-            break;
+        } else {
+            saldo = saldo - valorSaque;
+            printf("Você ainda tem %d disponíveis \n", saldo);
         }
-
-        saldo = saldo - valorSaque;
-        printf("Você ainda tem %d disponíveis \n", saldo);
         break;
 
     case 2:
@@ -47,8 +49,10 @@ int main() {
 
     case 4:
         printf("Saindo...");
+        break;
 
     default:
+        printf("\nOpção inválida! Por favor, tente novamente.\n"); 
         break;
     }
 
