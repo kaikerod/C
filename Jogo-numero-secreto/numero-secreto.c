@@ -14,21 +14,29 @@ int main() {
 
     numeroSecreto = rand() % 10 + 1;
 
-    if (escolhaJogador <= 0) {
-        printf("Número inválido!");
-    }
 
-    while (escolhaJogador != numeroSecreto) {
-        if (escolhaJogador > numeroSecreto) {
+    for (escolhaJogador; escolhaJogador != numeroSecreto; tentativas++) {
+
+        if (escolhaJogador <= 0) {
+        printf("Número inválido!");
+        break;
+        } else if (escolhaJogador > numeroSecreto) {
             printf("O número é menor! \n");
             scanf("%d", &escolhaJogador);
         } else if (escolhaJogador < numeroSecreto){
             printf("O número é maior! \n");
             scanf("%d", &escolhaJogador);
+        } 
+
+        if (escolhaJogador == numeroSecreto) {
+            printf("Você acertou com %d tentativas! :)", tentativas);
         }
-        tentativas++;
+
+        if (tentativas == 3) {
+            printf("Seu número de tentativas acabou :(");
+            break;
+        }
     }
-    printf("Você acertou com %d tentativas! :)", tentativas);
 
     return 0;
 }
