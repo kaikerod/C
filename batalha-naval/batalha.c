@@ -45,7 +45,6 @@ int main() {
  
     if ((navio2_linha + TAMANHO_NAVIO) <= TAMANHO_TABULEIRO) {
 
-s.
         for (int i = 0; i < TAMANHO_NAVIO; i++) {
             if (tabuleiro[navio2_linha + i][navio2_coluna] == NAVIO) {
                 sobreposicao = true;
@@ -58,6 +57,26 @@ s.
             for (int i = 0; i < TAMANHO_NAVIO; i++) {
                 tabuleiro[navio2_linha + i][navio2_coluna] = NAVIO;
             }
+        }
+    }
+
+    int inicio_diag_principal = 1;
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        int pos = inicio_diag_principal + i;
+        // Verifica se a posição está dentro do tabuleiro
+        if (pos < TAMANHO_TABULEIRO) {
+            tabuleiro[pos][pos] = NAVIO;
+        }
+    }
+
+    int inicio_linha_sec = 0;
+    for (int i = 0; i < TAMANHO_NAVIO; i++) {
+        int linha = inicio_linha_sec + i;
+
+        int coluna = (TAMANHO_TABULEIRO - 1) - linha;
+        
+        if (linha < TAMANHO_TABULEIRO && coluna >= 0) {
+            tabuleiro[linha][coluna] = NAVIO;
         }
     }
 
