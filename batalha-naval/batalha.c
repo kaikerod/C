@@ -25,59 +25,41 @@ int main() {
 
     // --- Posicionando os Navios ---
 
-    // ** Navio 1 (Horizontal) **
-    int navio1_linha = 2;
-    int navio1_coluna = 3;
+    // ** Navio em formato de Cruz **
+    int cruz_linha_centro = 5;
+    int cruz_coluna_centro = 5;
 
-
-    if ((navio1_coluna + TAMANHO_NAVIO) <= TAMANHO_TABULEIRO) {
-        for (int i = 0; i < TAMANHO_NAVIO; i++) {
-            tabuleiro[navio1_linha][navio1_coluna + i] = NAVIO;
-        }
+    if (cruz_linha_centro > 0 && cruz_linha_centro < TAMANHO_TABULEIRO - 1 &&
+        cruz_coluna_centro > 0 && cruz_coluna_centro < TAMANHO_TABULEIRO - 1) {
+        tabuleiro[cruz_linha_centro][cruz_coluna_centro] = NAVIO; // Centro
+        tabuleiro[cruz_linha_centro - 1][cruz_coluna_centro] = NAVIO; // Cima
+        tabuleiro[cruz_linha_centro + 1][cruz_coluna_centro] = NAVIO; // Baixo
+        tabuleiro[cruz_linha_centro][cruz_coluna_centro - 1] = NAVIO; // Esquerda
+        tabuleiro[cruz_linha_centro][cruz_coluna_centro + 1] = NAVIO; // Direita
     }
 
+    // ** Navio em formato de Cone **
+    int cone_linha_topo = 7;
+    int cone_coluna_topo = 2;
 
-    // ** Navio 2 (Vertical) **
-    int navio2_linha = 4;
-    int navio2_coluna = 5;
-    bool sobreposicao = false;
-
- 
-    if ((navio2_linha + TAMANHO_NAVIO) <= TAMANHO_TABULEIRO) {
-
-        for (int i = 0; i < TAMANHO_NAVIO; i++) {
-            if (tabuleiro[navio2_linha + i][navio2_coluna] == NAVIO) {
-                sobreposicao = true;
-            }
-        }
-
-
-        if (!sobreposicao) {
-
-            for (int i = 0; i < TAMANHO_NAVIO; i++) {
-                tabuleiro[navio2_linha + i][navio2_coluna] = NAVIO;
-            }
-        }
+    if (cone_linha_topo + 1 < TAMANHO_TABULEIRO &&
+        cone_coluna_topo > 0 && cone_coluna_topo < TAMANHO_TABULEIRO - 1) {
+        tabuleiro[cone_linha_topo][cone_coluna_topo] = NAVIO; // Topo do cone
+        tabuleiro[cone_linha_topo + 1][cone_coluna_topo - 1] = NAVIO; // Base esquerda
+        tabuleiro[cone_linha_topo + 1][cone_coluna_topo] = NAVIO; // Base centro
+        tabuleiro[cone_linha_topo + 1][cone_coluna_topo + 1] = NAVIO; // Base direita
     }
 
-    int inicio_diag_principal = 1;
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        int pos = inicio_diag_principal + i;
-        // Verifica se a posição está dentro do tabuleiro
-        if (pos < TAMANHO_TABULEIRO) {
-            tabuleiro[pos][pos] = NAVIO;
-        }
-    }
+    // ** Navio em formato de Octaedro (Losango) **
+    int octa_linha_topo = 1;
+    int octa_coluna_meio = 7;
 
-    int inicio_linha_sec = 0;
-    for (int i = 0; i < TAMANHO_NAVIO; i++) {
-        int linha = inicio_linha_sec + i;
-
-        int coluna = (TAMANHO_TABULEIRO - 1) - linha;
-        
-        if (linha < TAMANHO_TABULEIRO && coluna >= 0) {
-            tabuleiro[linha][coluna] = NAVIO;
-        }
+    if (octa_linha_topo + 2 < TAMANHO_TABULEIRO &&
+        octa_coluna_meio > 0 && octa_coluna_meio < TAMANHO_TABULEIRO - 1) {
+        tabuleiro[octa_linha_topo][octa_coluna_meio] = NAVIO; // Ponto de cima
+        tabuleiro[octa_linha_topo + 1][octa_coluna_meio - 1] = NAVIO; // Meio esquerda
+        tabuleiro[octa_linha_topo + 1][octa_coluna_meio + 1] = NAVIO; // Meio direita
+        tabuleiro[octa_linha_topo + 2][octa_coluna_meio] = NAVIO; // Ponto de baixo
     }
 
 
